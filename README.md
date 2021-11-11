@@ -39,11 +39,11 @@ First, we need to be able to accurately identify quotes that pertain to climate 
 
 ## Proposed Timeline (TODO)
 
-- Week 1 (next week): 
-- Week 2:
-- Week 3:
-- Week 4:
-- Week 5 (submission week):
+- Week 1 (next week): Initial data analysis
+- Week 2: In-depth analysis (effects of different indicators etc..)
+- Week 3: More analysis and maybe some regression (estimate effect of hypothetical disasters)
+- Week 4: Add everything together
+- Week 5 (submission week): Final Touches
 
 ## Internal Milestones (TODO)
 
