@@ -6,7 +6,7 @@ Climate change is a central issue in our world today and it has already had obse
 
 ## Research Questions
 
-Do particular natural disasters influence the discussion around climate change? Do certain natural disasters have a bigger influence than others? Is there a geographical link between the two, i.e., is there more discussion about climate change when natural distasters occur in specific regions rather than others? Could we estimate the impact that a hypothetical major tsunami in the United States would have on climate change disucssions? Have natural disasters generally become more and more severe over the last years in terms of number of casualties or duration for example? If so, is there a significant correlation between the increased severity and the amount of attention climate change gets in the news? 
+Do particular natural disasters influence the discussion around climate change? Do certain natural disasters have a bigger influence than others? Is there a geographical link between the two, i.e., is there more discussion about climate change when natural distasters occur in specific regions rather than others? Could we estimate the impact that a hypothetical major tsunami in the United States would have on climate change disucssions? Have natural disasters generally become more and more severe over the last years in terms of number of casualties or duration for example? If so, is there a significant correlation between the increased severity and the amount of attention climate change gets in the news? Which indicators of a natural disaster have the biggest impact how much discussion there is about climate change, is it the death count, the damage cost or maybe some physical attribute of the disaster?
 
 ## Additional Datasets
 
@@ -33,11 +33,29 @@ There is additional information such as physical attributes of the disaster (suc
 
 The dataset containing all natural disasters for all continents between 2015 and 2020 has 2164 entries contained in a CSV file of size 885KB.
 
-## Methods
+## Methods (TODO)
 
-## Proposed Timeline
+First, we need to be able to accurately identify quotes that pertain to climate change. Ideas to achieve this are:
 
-## Internal Milestones
+## Proposed Timeline (TODO)
+
+- Week 1 (next week): 
+- Week 2:
+- Week 3:
+- Week 4:
+- Week 5 (submission week):
+
+## Internal Milestones (TODO)
+
+- Peng
+    - ...
+    - ...
+- Colin
+    - ...
+    - ...
+- Gil
+    - ...
+    - ...
 
 ## Questions for TAs
 
