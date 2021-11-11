@@ -10,7 +10,28 @@ Do particular natural disasters influence the discussion around climate change? 
 
 ## Additional Datasets
 
+### EM-DAT Database
 
+EM-DAT is a database on natural and technological disasters, containing essential data on the occurrence and effects of more than 21,000 disasters in the world, from 1900 to present. EM-DAT is maintained by the Centre for Research on the Epidemiology of Disasters (CRED) at the School of Public Health of the Université catholique de Louvain located in Brussels, Belgium. 
+
+A disaster has to conform to at least one of the following criteria:
+
+- 10 or more people dead;
+- 100 or more people affected;
+- The declaration of a state of emergency
+- A call for international assistance
+
+Datasets can be extracted for free from the EM-DAT database for non-commercial purposes, such as ours. A dataset can be extracted according to specifications such as time intervals (startyear-endyear), disaster types and (sub)subtypes (Natural -> Meteorological -> Storm -> Tropical cyclone) and geographical location (continents, regions, countries). The datasets can only be downloaded as .xlsx files but can be converted to CSV using a [conversion](https://cloudconvert.com/xlsx-to-csv) tool. 
+
+A retrieved dataset contains relevant information such as:
+- Disaster type (hierarchy from Group to Subsubtype)
+- Geographical location (Continent, Region, Country and specific locations such as cities/districts)
+- Duration (start date - end date)
+- Impact (deaths, injuries, number of affected, number of homeless, damages and reconstruction costs in USD$)
+
+There is additional information such as physical attributes of the disaster (such as the are covered by a flood), aid contributions in USD$ and the source of the information. This data could serve a purpose in our project but it is quite sparse.
+
+The dataset containing all natural disasters for all continents between 2015 and 2020 has 2298 rows contained in a CSV file of size 885KB.
 
 ## Methods
 
