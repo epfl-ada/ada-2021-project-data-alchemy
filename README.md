@@ -10,6 +10,8 @@ Do particular natural disasters influence the discussion around climate change? 
 
 ## Additional Datasets
 
+
+
 ## Methods
 
 ## Proposed Timeline
@@ -20,10 +22,12 @@ Do particular natural disasters influence the discussion around climate change? 
 
 ## Markdown Examples
 
+Command line
 ```bash
 pip install foobar
 ```
 
+Python code
 ```python
 import foobar
 
@@ -37,4 +41,5 @@ foobar.pluralize('goose')
 foobar.singularize('phenomena')
 ```
 
+Links
 [MIT](https://choosealicense.com/licenses/mit/)
