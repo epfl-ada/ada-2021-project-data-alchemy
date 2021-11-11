@@ -31,7 +31,7 @@ A retrieved dataset contains relevant information such as:
 
 There is additional information such as physical attributes of the disaster (such as the are covered by a flood), aid contributions in USD$ and the source of the information. This data could serve a purpose in our project but it is quite sparse.
 
-The dataset containing all natural disasters for all continents between 2015 and 2020 has 2298 rows contained in a CSV file of size 885KB.
+The dataset containing all natural disasters for all continents between 2015 and 2020 has 2164 entries contained in a CSV file of size 885KB.
 
 ## Methods
 
