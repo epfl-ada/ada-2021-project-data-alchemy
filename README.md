@@ -37,7 +37,7 @@ The dataset containing all natural disasters for all continents between 2015 and
 
 First, we need to be able to accurately identify quotes that pertain to climate change. Ideas to achieve this are:
 
-## Proposed Timeline (TODO)
+## Proposed Timeline
 
 - Week 1 (next week): Initial data analysis
 - Week 2: In-depth analysis (effects of different indicators etc..)
@@ -56,6 +56,16 @@ First, we need to be able to accurately identify quotes that pertain to climate 
 - Gil
     - Evaluate if certain disasters cause more discussion
     - ...
+
+## Structure of Notebooks (TODO)
+
+### emdat.ipynb
+
+Loading and cleaning of the dataset taken from the EM-DAT database.
+
+### extract.ipynb
+
+TODO
 
 ## Questions for TAs
 
