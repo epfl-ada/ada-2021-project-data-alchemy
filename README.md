@@ -15,6 +15,7 @@ From there, multiple subquestions can be explored :
 - Could we then estimate the impact that a hypothetical major tsunami in the United States would have on climate change discussions? 
 - Have natural disasters generally become more and more severe over the last years in terms of number of casualties, duration or damages for example? If so, is there a significant correlation between the increased severity and the amount of attention climate change gets in the news? 
 - Which indicators of a natural disaster have the biggest impact how much discussion there is about climate change, is it the death count, the damage cost or maybe some physical attribute of the disaster?
+-What is the public sentiment towards climate change and natural disasters? Which natural disasters have the greatest impact on public sentiment? Has public sentiment towards climate change changed over time and what are the trends?
 
 ## Additional Datasets
 
@@ -45,12 +46,17 @@ The dataset containing all natural disasters for all continents between 2015 and
 
 First, we need to be able to accurately identify quotes that pertain to climate change. 
 The first idea and also easiest one is to simply filter data by removing expressions we attribute to metaphors. That's what we do in the notebook filter_data.ipynb. 
-We have tried using metaphor detection algorithms but have not been able to find one that was able to filter any quotes. 
+We have tried using metaphor detection algorithms but have not been able to find one that was able to filter any quotes. In the subsequent project process, we will explore better filtering methods.
 
 We also need to accurately identify what triggers discussion around climate change. For example, if there is a week-long climate change conference that sparks a lot of discussion around the topic but no major disaster has recently taken place, trying to make sense of the increase in discussion without any disaster could influence our analysis. No current database tracks these sorts of events. This problem can be dealt with by filtering out certain known events like the September 2019 climate strikes and by focusing on periods when major natural disasters are known to occur. In addition, we havce access to the EM-DAT database so we could look specifically at periods following a known disaster.
 
 To process and examine the data, we have counted the occurences of the keywords and then performed a rolling average to smooth our data. Then, a simple cross correlation function shows significant correlation. 
 
+In order to analyze public sentiment towards climate change and natural disasters, we give each quote a positive/negative score and subjective/objective score. 
+This not only helps us analyze public sentiment changes and correlations, but also helps us filter out some irrelevant data. Test code of this part is in the sentiment-analysis folder, 
+and we will integrate it into the process notebook during the subsequent project process.
+
+Using EM-DAT database to classify natural disasters in terms of severity and region, and the number of discussions resulting from different regions and different levels of natural disaster severity were analysed separately and compared.
 ## Proposed Timeline
 
 - Week 1 (next week): Initial data analysis
@@ -62,8 +68,9 @@ To process and examine the data, we have counted the occurences of the keywords 
 ## Internal Milestones (TODO)
 
 - Peng
-    - ...
-    - ...
+    - Area correlation analysis, Hypothetical experiments and analysis.
+    - Analyse the impact of climate change on public sentiment，and the degree of impact of different natural 
+      disasters on public sentiment，find the correlations.
 - Colin
     - ...
     - ...
@@ -92,6 +99,12 @@ Loading and cleaning of the dataset taken from the EM-DAT database.
 
 Process data from both the Quotebank dataset as well as the EM-DAT dataset. Plot evolutions of discussion around topics and of the impacts of natural disasters.
 
+### sentiment_test.py
+Based on third party github repositories'TexyBlob' ,giving sentiment scores for quotes.
+
+
 ## Questions for TAs
+
+
  
 --
