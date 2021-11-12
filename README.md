@@ -35,7 +35,9 @@ The dataset containing all natural disasters for all continents between 2015 and
 
 ## Methods (TODO)
 
-First, we need to be able to accurately identify quotes that pertain to climate change. Ideas to achieve this are:
+First, we need to be able to accurately identify quotes that pertain to climate change. Ideas to achieve this are: TODO
+
+We also need to accurately identify what triggers discussion around climate change. For example, if there is a week-long climate change conference that sparks a lot of discussion around the topic but no major disaster has recently taken place, trying to make sense of the increase in discussion without any disaster could influence our analysis. This problem can be done by filtering out certain known events like the September 2019 climate strikes and by focusing on periods when major natural disasters are known to occur. In addition, we havce access to the EM-DAT database so we could look specifically at periods following a known disaster.
 
 ## Proposed Timeline
 
@@ -55,7 +57,7 @@ First, we need to be able to accurately identify quotes that pertain to climate 
     - ...
 - Gil
     - Evaluate if certain disasters cause more discussion
-    - ...
+    - Create skeleton of website
 
 ## Structure of Notebooks (TODO)
 
@@ -63,32 +65,14 @@ First, we need to be able to accurately identify quotes that pertain to climate 
 
 Loading and cleaning of the dataset taken from the EM-DAT database.
 
-### extract.ipynb
+### extract.ipynb (TODO)
 
 TODO
 
+### process.ipynb
+
+Process data from both the Quotebank dataset as well as the EM-DAT dataset. Plot evolutions of discussion around topics and of the impacts of natural disasters.
+
 ## Questions for TAs
-
-## Markdown Examples
-
-Command line
-```bash
-pip install foobar
-```
-
-Python code
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
-
-Links
-[MIT](https://choosealicense.com/licenses/mit/)
+ 
+--
