@@ -43,9 +43,13 @@ The dataset containing all natural disasters for all continents between 2015 and
 
 ## Methods (TODO)
 
-First, we need to be able to accurately identify quotes that pertain to climate change. Ideas to achieve this are: TODO
+First, we need to be able to accurately identify quotes that pertain to climate change. 
+The first idea and also easiest one is to simply filter data by removing expressions we attribute to metaphors. That's what we do in the notebook filter_data.ipynb. 
+We have tried using metaphor detection algorithms but have not been able to find one that was able to filter any quotes. 
 
 We also need to accurately identify what triggers discussion around climate change. For example, if there is a week-long climate change conference that sparks a lot of discussion around the topic but no major disaster has recently taken place, trying to make sense of the increase in discussion without any disaster could influence our analysis. No current database tracks these sorts of events. This problem can be dealt with by filtering out certain known events like the September 2019 climate strikes and by focusing on periods when major natural disasters are known to occur. In addition, we havce access to the EM-DAT database so we could look specifically at periods following a known disaster.
+
+To process and examine the data, we have counted the occurences of the keywords and then performed a rolling average to smooth our data. Then, a simple cross correlation function shows significant correlation. 
 
 ## Proposed Timeline
 
@@ -67,18 +71,17 @@ We also need to accurately identify what triggers discussion around climate chan
     - Evaluate if certain disasters cause more discussion
     - Create skeleton of website
 
-## Structure of Notebooks (TODO)
+## Structure of Notebooks
 
 The code is organised notebooks related to each step of the data analysis :
 
-### extract.ipynb (TODO)
+### extract_data.ipynb
 
 Extract data from the json files. <br> 
 This notebook will search for any quotes from a list of speakers containing any of the keywords in a list of keywords and write a binary pickle file containing the data.
 
-### TODO.ipynb
+### filter_data.ipynb
 
-Language analysis.
 Filtering of false positives for certain keywords that are subject to metaphorical uses. 
 
 ### emdat.ipynb
