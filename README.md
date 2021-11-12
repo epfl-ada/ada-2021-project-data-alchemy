@@ -6,7 +6,15 @@ Climate change is a central issue in our world today and it has already had obse
 
 ## Research Questions
 
-Do particular natural disasters influence the discussion around climate change? Do certain natural disasters have a bigger influence than others? Is there a geographical link between the two, i.e., is there more discussion about climate change when natural distasters occur in specific regions rather than others? Could we estimate the impact that a hypothetical major tsunami in the United States would have on climate change disucssions? Have natural disasters generally become more and more severe over the last years in terms of number of casualties or duration for example? If so, is there a significant correlation between the increased severity and the amount of attention climate change gets in the news? Which indicators of a natural disaster have the biggest impact how much discussion there is about climate change, is it the death count, the damage cost or maybe some physical attribute of the disaster?
+The main research question is :
+- Do natural disasters influence the discussion around climate change? 
+
+From there, multiple subquestions can be explored :
+
+- Do certain natural disasters have a bigger influence than others? Is there a geographical link between the two, i.e., is there more discussion about climate change when natural distasters occur in specific regions rather than others? 
+- Could we then estimate the impact that a hypothetical major tsunami in the United States would have on climate change discussions? 
+- Have natural disasters generally become more and more severe over the last years in terms of number of casualties, duration or damages for example? If so, is there a significant correlation between the increased severity and the amount of attention climate change gets in the news? 
+- Which indicators of a natural disaster have the biggest impact how much discussion there is about climate change, is it the death count, the damage cost or maybe some physical attribute of the disaster?
 
 ## Additional Datasets
 
