@@ -15,7 +15,7 @@ From there, multiple subquestions can be explored :
 - Could we then estimate the impact that a hypothetical major tsunami in the United States would have on climate change discussions? 
 - Have natural disasters generally become more and more severe over the last years in terms of number of casualties, duration or damages for example? If so, is there a significant correlation between the increased severity and the amount of attention climate change gets in the news? 
 - Which indicators of a natural disaster have the biggest impact how much discussion there is about climate change, is it the death count, the damage cost or maybe some physical attribute of the disaster?
--What is the public sentiment towards climate change and natural disasters? Which natural disasters have the greatest impact on public sentiment? Has public sentiment towards climate change changed over time and what are the trends?
+- What is the public sentiment towards climate change and natural disasters? Which natural disasters have the greatest impact on public sentiment? Has public sentiment towards climate change changed over time and what are the trends?
 
 ## Additional Datasets
 
