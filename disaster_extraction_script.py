@@ -5,7 +5,7 @@ from disaster_extr_constants import *
 from disaster_extr_helpers import *
 
 compression = 'bz2'
-chunksize = 1000
+chunksize = 100000
 
 YEARS = [2015, 2016, 2017, 2018, 2019] # Treat 2020 at the bottom
 disaster_types = ['storm', 'heat_wave']
