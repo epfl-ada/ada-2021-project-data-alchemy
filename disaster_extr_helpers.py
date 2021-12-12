@@ -93,24 +93,11 @@ def generate_regex_from_year_and_type(year, disaster_type, include_climate=True)
 
 def process_quotes(data_path, lower_YEAR, upper_YEAR, year, regex_pattern, compression='bz2',chunksize=100000):
     chunk_interval_list = []
-
-
-
-    i = 0
-
-
     with pd.read_json(data_path,lines=True,compression=compression,chunksize=chunksize) as df_reader:
         print('Reading chunks of size {} from {} dataset.'.format(chunksize, year))
         for chunk in tqdm(df_reader):
             chunk_interval = chunk[(chunk['date'] >= lower_YEAR) & (chunk['date'] <= upper_YEAR)]
             chunk_interval_list.append(chunk_interval[chunk_interval['quotation'].str.contains(regex_pattern)])
-
-
-            i += 1
-            if i == 2:
-                break
-
-
     return pd.concat(chunk_interval_list)
 
 def get_disaster_df_from_type(disaster_type, storm_df, heat_wave_df):
