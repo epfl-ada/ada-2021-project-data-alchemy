@@ -674,6 +674,7 @@ Dis No,Group,Subgroup,Type,Subtype,Subsubtype,Name,Country,ISO,Region,Continent,
 2017-0038-AFG,Natural,Meteorological,Storm,Convective storm,Winter storm/Blizzard,,Afghanistan,AFG,Southern Asia,Asia,,0.0,Kph,31.0,0.0,0.0,0.0,0.0,0.0,2017-01-24,2017-01-25,1
 2017-0046-IND,Natural,Hydrological,Landslide,Avalanche,,,India,IND,Southern Asia,Asia,Heavy snow,0.0,,28.0,0.0,0.0,0.0,0.0,0.0,2017-01-25,2017-01-26,1
 2017-0034-TJK,Natural,Hydrological,Landslide,Avalanche,,,Tajikistan,TJK,Central Asia,Asia,,0.0,,13.0,0.0,0.0,0.0,0.0,0.0,2017-01-27,2017-01-28,1
+2017-9999-AUS,Natural,Meteorological,Extreme temperature , Heat wave,,,Australia,AUS,Australia and New Zealand,Oceania,,48.2,°C,0.0,0.0,0.0,0.0,0.0,0.0,2017-01-30,2017-02-14,15
 2017-0052-PER,Natural,Hydrological,Flood,,,,Peru,PER,South America,Americas,Heavy rains,288499.0,Km2,1.0,0.0,12000.0,0.0,12000.0,0.0,2017-02-01,2017-02-07,6
 2017-0226-PHL,Natural,Hydrological,Flood,,,,Philippines (the),PHL,South-Eastern Asia,Asia,Heavy rains,30389.0,Km2,13.0,0.0,334000.0,0.0,334000.0,0.0,2017-02-01,2017-02-07,6
 2017-0025-PAK,Natural,Hydrological,Landslide,Avalanche,,,Pakistan,PAK,Southern Asia,Asia,,0.0,,9.0,3.0,110.0,0.0,113.0,0.0,2017-02-04,2017-02-04,0
