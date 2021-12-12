@@ -92,8 +92,3 @@ data_path_2019 = 'data/quotes-'+str(YEAR-1)+'.json.bz2'
 df_concat_result_2019 = process_quotes(data_path_2019,lower_2019,upper_2019,YEAR-1,regex_pattern,compression=compression,chunksize=chunksize)
 
 write_df_to_disk(df_concat_result_2019, disaster_type, YEAR, compression=compression, file_type='both')
-
-
-
-
-
