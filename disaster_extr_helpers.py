@@ -4,12 +4,10 @@
 import pandas as pd
 from tqdm import tqdm
 import datetime
-import bz2
-import json
 from disaster_extr_constants import *
 
 
-### ------------------ HELPER FUNCTIONS-----------------------------------------------------------------------
+### ------------------ HELPER FUNCTIONS -----------------------------------------------------------------------
 
 def df_time_interval(df, start, end):
     time_mask = ((df['StartDate']>=start) & (df['StartDate']<=end))

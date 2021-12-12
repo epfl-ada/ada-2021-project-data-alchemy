@@ -10,7 +10,7 @@ chunksize = 1000
 YEARS = [2015, 2016, 2017, 2018, 2019] # Treat 2020 at the bottom
 disaster_types = ['storm', 'heat_wave']
 
-### ------------------ RUN-----------------------------------------------------------------------
+### ------------------ RUN -----------------------------------------------------------------------
 
 data = 'data/emdat_processed.csv'
 parse_dates = ['StartDate', 'EndDate']

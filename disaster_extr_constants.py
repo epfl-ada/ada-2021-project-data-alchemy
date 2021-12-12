@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-### ------------------ CONSTANTS-----------------------------------------------------------------------
+### ------------------ CONSTANTS -----------------------------------------------------------------------
 
 australia_heat_wave = { 
     'Group': 'Natural',
@@ -28,7 +28,7 @@ australia_heat_wave = {
     'EndDate': '2017-02-14',
     'Duration':15
 }
-# Not necessary, row already added to csv file
+# Not necessary to add to csv file, row already added to csv file
 #row_series = pd.Series(data=australia_heat_wave, name='2017-9999-AUS')
 #df_emdat = df_emdat.append(row_series, ignore_index=False)
 
