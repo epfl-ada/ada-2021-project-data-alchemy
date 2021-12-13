@@ -7,3 +7,6 @@ quotes-2019.json.bz2
 quotes-2020.json.bz2
 *.pyc
 tests_colin.ipynb
+data/speaker_attributes.parquet/speaker_attributes.parquet
+.vscode/settings.json
+data/wikidata-20211208-lexemes.json.bz2
