@@ -924,6 +924,114 @@ heat_tags_2020_neg = pd.DataFrame(
     }
 )
 
+storm_tags_2015_pos = pd.DataFrame(
+    {'tags': [
+        r'(?=.*\b([mM]exic(o|ans?)|[tT]ehuantepec|[cC]oasts?|[jJ]alisco)\b)(?=.*\b([hH]urricanes?|[sS]torms?)\b)',
+        r'(?=.*\b([mM]exic(o|ans?)|[tT]ehuantepec|[cC]oasts?|[jJ]alisco)\b)(?=.*\b([fF]lood(waters?|s|ed|ing)?|[rR]ain(ed|s|fall)?|[lL]andslides?)\b)',
+        r'\b(Patricia)\b',
+        r'\b([cC]ategory 5)\b',
+        r'\b(NOAA)\b',
+        r'\b(National Hurricane Center|NHC)\b',
+        r'\b(Mexican (Red Cross|Army|Navy|Federal Police))\b']
+    }
+)
+
+def storm_tags_2015_extra(filtered_for_pos):
+    filtered_extra = extract_quotes_protected(
+        filtered_for_pos, 
+        r'\b(Texas|Mexic(o|ans?)|[hH]urricanes?|[cC]ategory|[sS]torms?)\b', 
+        r'\b(Patricia|)\b',
+        #with_url=[r'\.co\.uk', 'urls', r'http', 'urls']
+    )
+    return filtered_extra
+
+storm_tags_2016_pos = pd.DataFrame(
+    {'tags': [
+        ## Hurricane Harvey tags
+        r'(?=.*\b([fF]iji)\b)(?=.*\b([fF]lood(waters?|s|ed|ing)?|[rR]ain(ed|s|fall)?|[lL]andslides?|[cC]yclones?|[sS]torms?)\b)',
+        r'\b(Winston)\b',
+        r'\b(Vanua Balavu)\b',
+        r'\b([cC]ategory 5)\b',
+        r'\b(Fiji(an)?)\b',
+        r'\b([jJ]oint [tT]yphoon [wW]arning [cC]enter)\b',
+        r'\b(Rakiraki District)\b',
+        r'\b(FMS)\b']
+    }
+)
+
+storm_tags_2017_pos = pd.DataFrame(
+    {'tags': [
+        ## Hurricane Harvey tags
+        r'(?=.*\b([tT]exas|[lL]ouisiana|[cC]oasts?|U.?S.?A?|[bB]each(es)?)\b)(?=.*\b([rR]ain(ed|s|fall)?|[lL]andslides?)\b)',
+        r'(?=.*\b([tT]exas|[lL]ouisiana|[cC]oasts?|U.?S.?A?|[bB]each(es)?)\b)(?=.*\b([hH]urricanes?|[sS]torms?)\b)',
+        r'(?=.*\b([tT]exas|[lL]ouisiana|[cC]oasts?|U.?S.?A?)\b)(?=.*\b([fF]lood(waters?|s|ed|ing)?|[rR]ain(ed|s|fall)?)\b)',
+        r'\b(Harvey)\b',
+        r'\b([cC]ategory 4)\b',
+        r'\b([sS]an [jJ]os[ée] [iI]sland)\b',
+        r'\b(H.R. ?601)\b',
+        r'\b(NOAA)\b',
+        r'\b(Federal Emergency Management Agency|FEMA)\b',
+        r'\b(National Hurricane Center|NHC)\b']
+    }
+)
+
+storm_tags_2018_pos_asia = pd.DataFrame(
+    {'tags': [
+        # Mangkhut tags
+        r'(?=.*\b([cC]hin(a|ese)?|[pP]hilippines?|[hH]ong [kK]ong|[gG]uangdong|[gG]uangzhou|[cC]agayan|[bB]aggao|[aA]sian?)\b)(?=.*\b([rR]ain(ed|s|fall)?|[lL]andslides?)\b)',
+        r'(?=.*\b([cC]hin(a|ese)?|[pP]hilippines?|[hH]ong [kK]ong|[gG]uangdong|[gG]uangzhou|[cC]agayan|[bB]aggao|[aA]sian?)\b)(?=.*\b([hH]urricanes?|[sS]torms?|[cC]yclones?|[tT]yphoons?)\b)',
+        r'\b([mM]angkhut)\b',
+        r'\b([oO]mpong)\b',
+        r'\b([cC]ategory 5)\b',
+        r'\b([nN]orthern [mM]ariana [iI]slands)\b',
+        r'\b([hH]ong [kK]ong [oO]bservatory)\b',
+        r'\b([hH]urricane [sS]ignal)\b',
+        r'\b([mM]eteorological [bB]ureau)\b']
+    }
+)
+        
+storm_tags_2018_pos_america = pd.DataFrame(
+    {'tags': [
+        ## Hurricane Florence tags
+        r'(?=.*\b([cC]ape [vV]erde|[cC]oasts?|U.?S.?A?|[cC]arolinas?|[bB]each(es)?|[vV]irginia|[mM]aryland|[gG]eorgia)\b)(?=.*\b([rR]ain(ed|s|fall)?|[lL]andslides?)\b)',
+        r'(?=.*\b([cC]ape [vV]erde|[cC]oasts?|U.?S.?A?|[cC]arolinas?|[bB]each(es)?|[vV]irginia|[mM]aryland|[gG]eorgia)\b)(?=.*\b([hH]urricanes?|[sS]torms?)\b)',
+        r'(?=.*\b([cC]ape [vV]erde|[cC]oasts?|U.?S.?A?|[cC]arolinas?|[bB]each(es)?|[vV]irginia|[mM]aryland|[gG]eorgia)\b)(?=.*\b([hH]urricanes?|[sS]torms?)\b)',
+        r'(?=.*\b([cC]ape [vV]erde|[cC]oasts?|U.?S.?A?|[cC]arolinas?|[bB]each(es)?|[vV]irginia|[mM]aryland|[gG]eorgia)\b)(?=.*\b([fF]lood(waters?|s|ed|ing)?|[rR]ain(ed|s|fall)?)\b)',
+        r'\b(Florence)\b',
+        r'\b([cC]ategory 4)\b',
+        r'\b(NOAA)\b',
+        r'\b(SCEMD)\b',
+        r'\b(Federal Emergency Management Agency|FEMA)\b',
+        r'\b(National Hurricane Center|NHC)\b']
+    }
+)
+
+storm_tags_2019_pos = pd.DataFrame(
+    {'tags': [
+        r'\b([hH]agibis)\b',
+        r'\b([cC]ategory 5)\b',
+        r'\b([rR]eiwa 1)\b',
+        r'(?=.*\b([jJ]apan(ese)?|[iI]zu|[cC]hikuma|[uU]eda|[nN]agano|[sS]hinkansen|[fF]ukushima|[aA]sian?)\b)(?=.*\b([rR]ain(ed|s|fall)?|[lL]andslides?)\b)',
+        r'(?=.*\b([jJ]apan(ese)?|[iI]zu|[cC]hikuma|[uU]eda|[nN]agano|[sS]hinkansen|[fF]ukushima|[aA]sian?)\b)(?=.*\b([hH]urricanes?|[sS]torms?|[cC]yclones?|[tT]yphoons?)\b)',
+        r'(?=.*\b([jJ]apan(ese)?|[iI]zu|[cC]hikuma|[uU]eda|[nN]agano|[sS]hinkansen|[fF]ukushima)\b)(?=.*\b([dD]estructions?|[sS]tate of)\b)',
+        r'(?=.*\b([jJ]apan(ese)?|[iI]zu|[cC]hikuma|[uU]eda|[nN]agano|[sS]hinkansen|[fF]ukushima)\b)(?=.*\b([fF]lood(waters?|s|ed|ing)?|[eE]vacuat(ion|ed?)( center)?)\b)'
+    ]
+    }
+)
+
+storm_tags_2020_pos = pd.DataFrame(
+    {'tags': [
+        r'\b([kK]ammuri)\b',
+        r'\b([tT]isoy)\b',
+        r'\b(PAGASA)\b',
+        r'(?=.*\b([pP]hilippines?|Manila|Quezon|Davao|Caloocan|Budta|[aA]sian?)\b)(?=.*\b(rain(ed|s|fall)?)\b)',
+        r'(?=.*\b([pP]hilippines?|Manila|Quezon|Davao|Caloocan|Budta|[aA]sian?)\b)(?=.*\b([hH]urricanes?|[sS]torms?|[cC]yclones?|[tT]yphoons?)\b)',
+        r'(?=.*\b([pP]hilippines?|Manila|Quezon|Davao|Caloocan|Budta)\b)(?=.*\b([dD]estructions?|[sS]tate of)\b)',
+        r'(?=.*\b([pP]hilippines?|Manila|Quezon|Davao|Caloocan|Budta)\b)(?=.*\b([fF]lood(waters?|s|ed|ing)?)\b)'
+    ]
+    }
+)
+
 ### TEST
 
 # General tags for heat waves
