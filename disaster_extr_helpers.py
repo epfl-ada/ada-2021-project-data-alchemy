@@ -9,9 +9,38 @@ from disaster_extr_constants import *
 
 ### ------------------ HELPER FUNCTIONS -----------------------------------------------------------------------
 
-def df_time_interval(df, start, end):
-    time_mask = ((df['StartDate']>=start) & (df['StartDate']<=end))
+def df_time_interval(df, start, end, date_attr='StartDate'):
+    time_mask = ((df[date_attr]>=start) & (df[date_attr]<=end))
     return df.loc[time_mask]
+
+def extract_quotes(df, regex, field='quotation', complement=False):
+    mask = df[field].str.contains(regex)
+    if complement:
+        mask = ~mask
+    return df[mask]
+
+def extract_quotes_protected(df, protected_regex, unwanted_regex, field='quotation', with_url=False):
+    mask_protected = df[field].str.contains(protected_regex)
+    df_protected_index = set(df[mask_protected].index)
+
+    mask_unwanted = df[field].str.contains(unwanted_regex)
+    df_unwanted_index = set(df[mask_unwanted].index)
+    
+    if with_url:
+        url_regex, url_field = with_url[0], with_url[1]
+        mask_protected_url = df[url_field].str.contains(url_regex)
+        df_protected_url_index = set(df[mask_protected_url].index)
+        df_protected_index.update(df_protected_url_index)
+        
+        if len(with_url) > 2:
+            url_regex, url_field = with_url[2], with_url[3]
+            mask_unwanted_url = df[url_field].str.contains(url_regex)
+            df_unwanted_url_index = set(df[mask_unwanted_url].index)
+            df_unwanted_index.update(df_unwanted_url_index)   
+        
+    
+    resulting_inices = list(df_unwanted_index - df_protected_index)
+    return df.drop(resulting_inices)
 
 def get_df_disaster(df, year_to_id_map, set_val=None):
     IDS = sum(year_to_id_map.values(), [])
@@ -47,11 +76,11 @@ def compute_n_rows(path_to_file, compression='bz2', chunksize=1000000):
             count += len(chunk)
     return count
 
-def write_df_to_disk(df, disaster_type, year, compression='bz2', file_type='csv'):
+def write_df_to_disk(df, disaster_type, year, additional_text='climate_processed', compression='bz2', file_type='csv'):
     if file_type == 'csv':
-        df.to_csv('data/'+str(year)+'_'+disaster_type+'_climate_processed_csv.bz2',index=False, compression=compression)
+        df.to_csv('data/'+str(year)+'_'+disaster_type+'_'+additional_text+'_csv.bz2',index=False, compression=compression)
     elif file_type == 'json':
-        df.to_json('data/'+str(year)+'_'+disaster_type+'_climate_processed_json.bz2', compression=compression)
+        df.to_json('data/'+str(year)+'_'+disaster_type+'_'+additional_text+'_json.bz2', compression=compression)
     elif file_type == 'both':
         write_df_to_disk(df, disaster_type, year, compression=compression, file_type='csv')
         write_df_to_disk(df, disaster_type, year, compression=compression, file_type='json')
