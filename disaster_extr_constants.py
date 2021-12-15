@@ -944,6 +944,12 @@ storm_tags_2016_pos = pd.DataFrame(
     }
 )
 
+storm_tags_2016_neg = pd.DataFrame(
+    {'tags': [
+        r'\b(Churchh?ill)\b']
+    }
+)
+
 storm_tags_2017_pos = pd.DataFrame(
     {'tags': [
         r'(?=.*\b([tT]exas|[lL]ouisiana|[cC]oasts?|U.?S.?A?|[bB]each(es)?)\b)(?=.*\b([rR]ain(ed|s|fall)?|[lL]andslides?)\b)',
@@ -956,6 +962,12 @@ storm_tags_2017_pos = pd.DataFrame(
         r'\b(NOAA)\b',
         r'\b(Federal Emergency Management Agency|FEMA)\b',
         r'\b(National Hurricane Center|NHC)\b']
+    }
+)
+
+storm_tags_2017_neg = pd.DataFrame(
+    {'tags': [
+        r'\b(Weinstein)\b']
     }
 )
 
@@ -987,6 +999,21 @@ storm_tags_2018_pos_america = pd.DataFrame(
         r'\b(SCEMD)\b',
         r'\b(Federal Emergency Management Agency|FEMA)\b',
         r'\b(National Hurricane Center|NHC)\b']
+    }
+)
+
+# Apply extra step (based on protecting relevant 'Patricia' quotes)
+def storm_tags_2018_asia_extra(filtered_for_pos):
+    filtered_extra = extract_quotes_protected(
+        filtered_for_pos, 
+        r'\b([mM]angkhut)\b',
+        r'\b(Florence|Irma|Category 5)\b',
+        with_url=[r'angkhut', 'urls'])
+    return filtered_extra
+
+storm_tags_2018_neg_america = pd.DataFrame(
+    {'tags': [
+        r'\b([mM]rs|Kat|Pugh)\b']
     }
 )
 
