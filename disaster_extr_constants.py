@@ -89,6 +89,20 @@ HEAT_WAVES_2020_val = {
 
 # ---- TAGS USED FOR EXTRACTION (see disaster_extraction_script.py for usage) ----
 
+# General tags for extracting all heat waves
+heat_tags_general = pd.DataFrame(
+    {'tags': [
+        r'\b([mM]ercury (rose|hit))\b',
+        r'\b([hH]eat(ing)?)\b',
+        r'\b([tT]emperatures?)\b',
+        r'\b([hH]ot(test|ter)?)\b',
+        r'\b([wW]arm(er|est)?)\b',
+        r'\b([hH]eatstrokes?)\b',
+        r'\b([hH]eatwaves?)\b',
+        r'\b([hH]eatstorms?)\b']
+    }
+)
+
 # General tags for heat waves
 heat_tags = pd.DataFrame(
     {'tags': [
@@ -204,13 +218,24 @@ heat_tags_2020 = pd.DataFrame(
     }
 )
 
+# General tags for extracting all storms
+storm_tags_general = pd.DataFrame(
+    {'tags': [
+        r'\b([tT]ropical [sS]torms?)\b',
+        r'\b([cC]yclones?)\b',
+        r'\b([tT]yphoons?)\b', 
+        r'\b([hH]urricanes?)\b',
+        r'\b([wW]inds?)\b',
+        r'\b([gG]usts?)\b',
+        r'\b((one|ten|[0-9]{1,2})-minute sustain(ed)?)\b',
+        r'\b([mM]aximum sustained winds?)\b',
+        r'\b([gG]ale[- ]force)\b']
+    }
+) 
+
 # General tags for storms
 storm_tags = pd.DataFrame(
     {'tags': [
-        #r'\b([tT]ropical [sS]torms?)\b',
-        #r'\b([cC]yclones?)\b',
-        #r'\b([tT]yphoons?)\b',   # Maybe only include for typhoon?
-        #r'\b([hH]urricanes?)\b', # Maybe only include for hurricane?
         r'\b([wW]inds?)\b',
         r'\b([gG]usts?)\b',
         r'\b((one|ten|[0-9]{1,2})-minute sustain(ed)?)\b',

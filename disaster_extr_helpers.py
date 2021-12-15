@@ -127,6 +127,23 @@ def process_quotes(data_path, lower_YEAR, upper_YEAR, year, regex_pattern, compr
             chunk_interval_list.append(chunk_interval[chunk_interval['quotation'].str.contains(regex_pattern)])
     return pd.concat(chunk_interval_list)
 
+def process_quotes_both_disaster_and_climate(data_path, year, regex_pattern_disaster, regex_pattern_climate, compression='bz2',chunksize=100000, skip_climate=False):
+    chunk_interval_list_disaster = []
+    chunk_interval_list_climate = []
+    with pd.read_json(data_path,lines=True,compression=compression,chunksize=chunksize) as df_reader:
+        print('Reading chunks of size {} from {} dataset.'.format(chunksize, year))
+        for chunk in tqdm(df_reader):
+            chunk_interval_list_disaster.append(chunk[chunk['quotation'].str.contains(regex_pattern_disaster)])
+            if not skip_climate:
+                chunk_interval_list_climate.append(chunk[chunk['quotation'].str.contains(regex_pattern_climate)])
+
+    if skip_climate:
+        climate_return = None
+    else: 
+        climate_return = pd.concat(chunk_interval_list_climate)
+
+    return pd.concat(chunk_interval_list_disaster), climate_return
+
 def get_disaster_df_from_type(disaster_type, storm_df, heat_wave_df):
     if disaster_type == 'storm':
         return storm_df
