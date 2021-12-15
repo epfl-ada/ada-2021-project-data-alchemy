@@ -5,6 +5,8 @@ from disaster_extr_helpers import extract_quotes_protected, extract_quotes
 
 ### ------------------ CONSTANTS -----------------------------------------------------------------------
 
+# 'Artificial' entry for Australia 2017 heat wave (only associated forest fire was already present in EMDAT)
+# Not necessary to add to dataframe, row already added to csv file
 australia_heat_wave = { 
     'Group': 'Natural',
     'Subgroup':'Meteorological', 
@@ -29,9 +31,12 @@ australia_heat_wave = {
     'EndDate': '2017-02-14',
     'Duration':15
 }
-# Not necessary to add to csv file, row already added to csv file
-#row_series = pd.Series(data=australia_heat_wave, name='2017-9999-AUS')
-#df_emdat = df_emdat.append(row_series, ignore_index=False)
+
+# DICTIONARIES CONTAINING DISASTER(S) FOR EACH YEAR AND DISASTER TYPE
+# CORRESPONDING DICTIONARIES CONTAINING SPECIFIC VALUES (E.G., MAGNITUDE) 
+# FOR SPECIFIC DISASTERS IF MISSING/INACCURATE IN EMDAT
+
+# ---- STORMS ----
 
 STORMS = {
     '2015': ['2015-0470-MEX'],
@@ -59,29 +64,30 @@ STORMS_2020 = {
 }
 STORMS_2020_val = {}
 
+# ---- HEAT WAVES ----
+
 HEAT_WAVES = {
     '2015': ['2015-0189-IND'],
     '2016': ['2016-0133-IND'],
     '2017': ['2017-9999-AUS', '2017-0072-AUS'], # heat wave and associated fire
     '2018': ['2018-0226-JPN', '2018-0256-PRK'],
-    '2019': ['2019-0366-BEL', '2019-0366-FRA', '2019-0366-NLD', '2019-0366-DEU'], #'2019-0366-AUT' (no value for temp), '2019-0650-GBR' (lasts too long)
-  #  '2020': ['2019-0545-AUS'] # Forest fire (can't use '2020-0441-USA' because in august)
+    '2019': ['2019-0366-BEL', '2019-0366-FRA', '2019-0366-NLD', '2019-0366-DEU'], #'2019-0366-AUT' (no value for magnitude), '2019-0650-GBR' (lasts too long)
 }
+
 HEAT_WAVES_val = {
-    #'2020-0441-USA': {'Magnitude': 4180},
     '2017-0072-AUS': {'Magnitude': 550},
     '2018-0256-PRK': {'Deaths': 42},
-    #'2019-0545-AUS': {'Magnitude': 186360}
 }
 
 HEAT_WAVES_2020 = {
-    '2020': ['2019-0545-AUS'] # Forest fire (can't use '2020-0441-USA' because in august)
+    '2020': ['2019-0545-AUS'] # Forest fire (can't use '2020-0441-USA' because in August 2020)
 }
 HEAT_WAVES_2020_val = {
-    #'2020-0441-USA': {'Magnitude': 4180},
+    #'2020-0441-USA': {'Magnitude': 4180}, (can't use '2020-0441-USA' because in August 2020)
     '2019-0545-AUS': {'Magnitude': 186360}
 }
 
+# ---- TAGS USED FOR EXTRACTION (see disaster_extraction_script.py for usage) ----
 
 # General tags for heat waves
 heat_tags = pd.DataFrame(
@@ -366,6 +372,7 @@ storm_tags_2020_unused = pd.DataFrame(
     }
 ) 
 
+# General Climate Tags
 climate_tags = pd.DataFrame(
     {'tags': [
         r'\b([cC]limate ([iI]mpact|[cC]hange|[cC]risis|[mM]odel|[eE]mergency))\b',
@@ -374,23 +381,9 @@ climate_tags = pd.DataFrame(
     }
 ) 
 
-## TAGS USED FOR PROCESSING/FILTERING
+# ---- TAGS USED FOR (more restrictive) FILTERING (see disaster_processing.ipynb for usage) ---
 
 heat_tags_2015_pos = pd.DataFrame(
-    {'tags': [
-        r'\b([iI]ndia)\b',
-        r'\b(IMD)\b',
-        r'\b([hH]eat[ -]?[wW]aves?)\b',
-        r'\b(([hH]igh|[sS]evere|[eE]xtreme) temperatures?)\b',
-        r'\b([cC]elsius|[fF]ahrenheit)\b',
-        r'\b(([eE]xtreme|[vV]olatile) [wW]eather)\b',
-        r'\b([hH]eat[ -]?strokes?)\b',
-        r'\b([hH]eat[ -]?storms?)\b',
-        r'\b([wW]orld [mM]eteorological [oO]rganisation)\b']
-    }
-)
-
-heat_tags_2016_pos = pd.DataFrame(
     {'tags': [
         r'\b([iI]ndia)\b',
         r'\b(IMD)\b',
@@ -432,6 +425,20 @@ heat_tags_2015_neg = pd.DataFrame(
         r'\b([iI]mmigrants?)\b',
         r'\b([dD]iseases?)\b',
         r'\b([pP]revious [rR]esearch)\b']
+    }
+)
+
+heat_tags_2016_pos = pd.DataFrame(
+    {'tags': [
+        r'\b([iI]ndia)\b',
+        r'\b(IMD)\b',
+        r'\b([hH]eat[ -]?[wW]aves?)\b',
+        r'\b(([hH]igh|[sS]evere|[eE]xtreme) temperatures?)\b',
+        r'\b([cC]elsius|[fF]ahrenheit)\b',
+        r'\b(([eE]xtreme|[vV]olatile) [wW]eather)\b',
+        r'\b([hH]eat[ -]?strokes?)\b',
+        r'\b([hH]eat[ -]?storms?)\b',
+        r'\b([wW]orld [mM]eteorological [oO]rganisation)\b']
     }
 )
 
@@ -570,8 +577,7 @@ heat_tags_2017_pos = pd.DataFrame(
         r'\b([fF]ires? (burn(ed|ing)?|alerts?))\b',
         r'\b([fF]lames?)\b'
         r'\b(Taree)\b',
-        r'\b(Ivanhoe)\b'
-    ]
+        r'\b(Ivanhoe)\b']
     }
 )
 
@@ -590,8 +596,7 @@ heat_tags_2018_pos = pd.DataFrame(
         r'\b([bB]ureau [oF]f [mM]eteorology)\b',
         r'\b(Korea)\b',
         r'\b([jJ]apan [mM]eteorological [aA]gency)\b',
-        r'\b([tT]okyo [fF]ire [dD]epartment)\b',
-    ]
+        r'\b([tT]okyo [fF]ire [dD]epartment)\b']
     }
 )
 
@@ -663,7 +668,6 @@ def heat_2018_extra(filtered_for_pos_then_neg):
         )
     return filtered_extra
     
-
 heat_tags_2019_pos = pd.DataFrame(
     {'tags': [
         r'\b([hH]eat[ -]?[wW]aves?)\b',
@@ -672,8 +676,7 @@ heat_tags_2019_pos = pd.DataFrame(
         #r'\b(([eE]xtreme|[vV]olatile) [wW]eather)\b',
         r'\b([hH]eat[ -]?strokes?)\b',
         r'\b([hH]eat[ -]?storms?)\b',
-        r'\b([sS]corching)\b'
-    ]
+        r'\b([sS]corching)\b']
     }
 )
 
@@ -731,10 +734,6 @@ heat_tags_2019_neg = pd.DataFrame(
         r'\b([mM]inus|[nN]egative)\b',
         r'\b([sS]hops?)\b',
         r'\b(MTA)\b',
-        
-
-        
-
         r'\b([rR]eactors?)\b',
         r'\b([cC]lients?)\b',
         r'\b([rR]ock)\b',
@@ -765,10 +764,6 @@ heat_tags_2019_neg = pd.DataFrame(
         r'\b([iI]nternal)\b',
         r'\b([iI]nsane)\b',
         r'\b([aA]thletes?)\b',
-
-        
-
-
         r'\b([rR]osters?)\b',
         r'\b([sS]tud(y|ies))\b',
         r'\b(America(ns?)?)\b',
@@ -781,12 +776,11 @@ heat_tags_2019_neg = pd.DataFrame(
         r'\b([pP]izzas?)\b',
         r'\b([rR]ails?)\b',
         r'\b(NYPD)\b',
-        r'\b([dD]roughts?)\b',
-
-    ]
+        r'\b([dD]roughts?)\b']
     }
 )
 
+# Apply extra step (based on url contents)
 def heat_2019_extra(filtered_for_pos_then_neg):
     filtered_for_pos_then_neg = extract_quotes(
         filtered_for_pos_then_neg, 
@@ -795,14 +789,14 @@ def heat_2019_extra(filtered_for_pos_then_neg):
         complement=True)
     return filtered_for_pos_then_neg
 
+### DISCOVERY OF 'positive lookahead assertion' WHICH GREATLY SIMPLIFIES THE TASK
 heat_tags_2020_pos = pd.DataFrame(
     {'tags': [
         r'\b([bB]ush [fF]ires?)\b',
         r'(?=.*\b(Australia)\b)(?=.*\b([tT]emperatures?)\b)',
         r'(?=.*\b(Australia)\b)(?=.*\b([fF]ires?)\b)',
         r'(?=.*\b(Australia)\b)(?=.*\b([hH]eat[ -]?[wW]aves?)\b)',
-        r'(?=.*\b(Sydney|New South Wales|Melbourne)\b)(?=.*\b([hH]eat[ -]?[wW]aves?)\b)'
-    ]
+        r'(?=.*\b(Sydney|New South Wales|Melbourne)\b)(?=.*\b([hH]eat[ -]?[wW]aves?)\b)']
     }
 )
 
@@ -869,9 +863,6 @@ heat_tags_2020_neg = pd.DataFrame(
         r'\b([gG]allargues-le-[mM]ontueux)\b',
         r'\b([bB]erlin[- ][tT]empelhof)\b',
         r'\b([bB]randenburg)\b',
-
-        
-
         r'\b([rR]eactors?)\b',
         r'\b([cC]lients?)\b',
         r'\b([rR]ock)\b',
@@ -902,10 +893,6 @@ heat_tags_2020_neg = pd.DataFrame(
         r'\b([iI]nternal)\b',
         r'\b([iI]nsane)\b',
         r'\b([aA]thletes?)\b',
-
-        
-
-
         r'\b([rR]osters?)\b',
         r'\b([sS]tud(y|ies))\b',
         r'\b(America(ns?)?)\b',
@@ -918,11 +905,11 @@ heat_tags_2020_neg = pd.DataFrame(
         r'\b([pP]izzas?)\b',
         r'\b([rR]ails?)\b',
         r'\b(NYPD)\b',
-        r'\b([dD]roughts?)\b',
-
-    ]
+        r'\b([dD]roughts?)\b']
     }
 )
+
+# STORMS
 
 storm_tags_2015_pos = pd.DataFrame(
     {'tags': [
@@ -936,18 +923,16 @@ storm_tags_2015_pos = pd.DataFrame(
     }
 )
 
+# Apply extra step (based on protecting relevant 'Patricia' quotes)
 def storm_tags_2015_extra(filtered_for_pos):
     filtered_extra = extract_quotes_protected(
         filtered_for_pos, 
         r'\b(Texas|Mexic(o|ans?)|[hH]urricanes?|[cC]ategory|[sS]torms?)\b', 
-        r'\b(Patricia|)\b',
-        #with_url=[r'\.co\.uk', 'urls', r'http', 'urls']
-    )
+        r'\b(Patricia|)\b')
     return filtered_extra
 
 storm_tags_2016_pos = pd.DataFrame(
     {'tags': [
-        ## Hurricane Harvey tags
         r'(?=.*\b([fF]iji)\b)(?=.*\b([fF]lood(waters?|s|ed|ing)?|[rR]ain(ed|s|fall)?|[lL]andslides?|[cC]yclones?|[sS]torms?)\b)',
         r'\b(Winston)\b',
         r'\b(Vanua Balavu)\b',
@@ -961,7 +946,6 @@ storm_tags_2016_pos = pd.DataFrame(
 
 storm_tags_2017_pos = pd.DataFrame(
     {'tags': [
-        ## Hurricane Harvey tags
         r'(?=.*\b([tT]exas|[lL]ouisiana|[cC]oasts?|U.?S.?A?|[bB]each(es)?)\b)(?=.*\b([rR]ain(ed|s|fall)?|[lL]andslides?)\b)',
         r'(?=.*\b([tT]exas|[lL]ouisiana|[cC]oasts?|U.?S.?A?|[bB]each(es)?)\b)(?=.*\b([hH]urricanes?|[sS]torms?)\b)',
         r'(?=.*\b([tT]exas|[lL]ouisiana|[cC]oasts?|U.?S.?A?)\b)(?=.*\b([fF]lood(waters?|s|ed|ing)?|[rR]ain(ed|s|fall)?)\b)',
@@ -1014,8 +998,7 @@ storm_tags_2019_pos = pd.DataFrame(
         r'(?=.*\b([jJ]apan(ese)?|[iI]zu|[cC]hikuma|[uU]eda|[nN]agano|[sS]hinkansen|[fF]ukushima|[aA]sian?)\b)(?=.*\b([rR]ain(ed|s|fall)?|[lL]andslides?)\b)',
         r'(?=.*\b([jJ]apan(ese)?|[iI]zu|[cC]hikuma|[uU]eda|[nN]agano|[sS]hinkansen|[fF]ukushima|[aA]sian?)\b)(?=.*\b([hH]urricanes?|[sS]torms?|[cC]yclones?|[tT]yphoons?)\b)',
         r'(?=.*\b([jJ]apan(ese)?|[iI]zu|[cC]hikuma|[uU]eda|[nN]agano|[sS]hinkansen|[fF]ukushima)\b)(?=.*\b([dD]estructions?|[sS]tate of)\b)',
-        r'(?=.*\b([jJ]apan(ese)?|[iI]zu|[cC]hikuma|[uU]eda|[nN]agano|[sS]hinkansen|[fF]ukushima)\b)(?=.*\b([fF]lood(waters?|s|ed|ing)?|[eE]vacuat(ion|ed?)( center)?)\b)'
-    ]
+        r'(?=.*\b([jJ]apan(ese)?|[iI]zu|[cC]hikuma|[uU]eda|[nN]agano|[sS]hinkansen|[fF]ukushima)\b)(?=.*\b([fF]lood(waters?|s|ed|ing)?|[eE]vacuat(ion|ed?)( center)?)\b)']
     }
 )
 
@@ -1027,156 +1010,15 @@ storm_tags_2020_pos = pd.DataFrame(
         r'(?=.*\b([pP]hilippines?|Manila|Quezon|Davao|Caloocan|Budta|[aA]sian?)\b)(?=.*\b(rain(ed|s|fall)?)\b)',
         r'(?=.*\b([pP]hilippines?|Manila|Quezon|Davao|Caloocan|Budta|[aA]sian?)\b)(?=.*\b([hH]urricanes?|[sS]torms?|[cC]yclones?|[tT]yphoons?)\b)',
         r'(?=.*\b([pP]hilippines?|Manila|Quezon|Davao|Caloocan|Budta)\b)(?=.*\b([dD]estructions?|[sS]tate of)\b)',
-        r'(?=.*\b([pP]hilippines?|Manila|Quezon|Davao|Caloocan|Budta)\b)(?=.*\b([fF]lood(waters?|s|ed|ing)?)\b)'
-    ]
+        r'(?=.*\b([pP]hilippines?|Manila|Quezon|Davao|Caloocan|Budta)\b)(?=.*\b([fF]lood(waters?|s|ed|ing)?)\b)']
     }
 )
 
-### TEST
-
-# General tags for heat waves
-heat_tags_2015_neg_TEST = pd.DataFrame(
+# General pos climate tags
+climate_tags_pos = pd.DataFrame(
     {'tags': [
-        r'\b([mM]ood)\b',
-        r'\b([tT]oddler)\b',
-        r'\b([vV]ehicle)\b',
-        r'\b([cC]elebrate)\b',
-        #r'\b([uU]niversity)\b',
-        r'\b([dD]iplomas?)\b',
-        r'\b([mM]useums?)\b',
-        r'\b([aA]cademi(c|a))\b',
-        r'\b([BM]A|[BM][sS][cC])\b',
-        r'\b([sS]tudents?)\b',
-        r'\b([cC]olleges?)\b',
-        r'\b([eE]ducation)\b',
-        r'\b([eE]quine)\b',
-        r'\b([gG]raduates?)\b',
-        r'\b(([uU]nder|[pP]ost)?graduate(\'s)? degrees?)\b',
-        r'\b(([dD]esign|[cC][sS]|[sS]cience|[aA]dvanced|[fF]ake|[lL]aw|[uU]niversity) degrees?)\b',
-        r'\b(([gG]rant|[cC]ollege|[hH]igher|[fF]or|[yY]ear|[aA]|[gG]et|[mM]y) degrees?)\b',
-        r'\b(([hH]is|[hH]er|[tT]heir|[oO]ur) degrees?)\b',
-        r'\b(([bB]achelor|[mM]aster)(\'?s)? degrees?)\b',
-        r'\b([wW]arm-hearted)\b',
-        r'\b([nN]ominat(ion|ed))\b',
-        r'\b([cC]harming)\b',
-        r'\b([cC]omedy)\b',
-        r'\b([mM]eat)\b',
-        r'\b([tT]acos)\b',
-        r'\b([hH]ottest issues?)\b',
-        r'\b([rR]estaurants?)\b',
-        r'\b([aA]leppo)\b',
-        r'\b([iI]ran(ians?)?)\b',
-        r'\b([tT]roops?)\b',
-        r'\b([iI]raq(i|is)?)\b',
-        r'\b(Afghanistan(is?)?)\b',
-        r'\b(heat on it)\b',
-        r'\b([gG]oalie)\b',
-        r'\b([sS]hots)\b',
-        r'\b([rR]acing)\b',
-        r'\b([tT][yi]res?)\b',
-        r'\b([pP]erfect storm)\b',
-        r'\b([dD]ivorc(ing|e))\b',
-        r'\b([gG]irlfriend)\b',
-        r'\b([bB]oyfriend)\b',
-        r'\b([tT]eachers?)\b',
-        r'\b([the heat out of)\b',
-        r'\b([hH]eating systems?)\b',
-        r'\b(I live for)\b',
-        r'\b([hH]ot-tempered)\b',
-        r'\b([rR]ookies?)\b',
-        r'\b([bB]asketballs?)\b',
-        r'\b([bB]aseballs?)\b',
-        r'\b(NBA)\b',
-        r'\b([qQ]uarterbacks?)\b',
-        r'\b([hH]is first years?)\b',
-        r'\b([pP]lay(ed)? well)\b',
-        r'\b([hH]ot-button)\b',
-        r'\b(bands?)\b',
-        r'\b([nN]utritionists?)\b',
-        r'\b([pP]roduction loss(es)?)\b',
-        r'\b(Miami Heat)\b',
-        r'\b([sS]noop)\b',
-        r'\b([hH]ot[- ](dogs?|toned|pants))\b',
-        r'\b([hH]ot[- ](lunch(es)?|foods?|dinners?|breakfast|meals?|Springs|baths?|appetizers?|stove|energy))\b',
-        r'\b([hH]ot[- ](gazes?|desires?|kiss(es)?|air balloons?|tea|touch|showers?|butter|plates?|cars?))\b',
-        r'\b([sS]mokin\' hot)\b',
-        r'\b(the lead)\b',
-        r'\b([cC]rampons)\b',
-        r'\b([wW]et basements?)\b',
-        r'\b([hH]eat is on)\b',
-        r'\b([sS]cams?)\b',
-        r'\b(Market)\b',
-        r'\b(Damascus)\b',
-        r'\b(Homs)\b',
-        r'\b([hH]ot on the)\b',
-        r'\b([wW]arm[- ]up)\b',
-        r'\b([pP]lay(ing|ers?|ed))\b',
-        r'\b(iron)\b',
-        r'\b([hH]ot-toned)\b',
-        r'\b([mM]elodic)\b',
-        r'\b([fF]unk)\b',
-        r'\b([gG]uitars?)\b',
-        r'\b([rR]hythms?)\b',
-        r'\b([hH]ip[- ]hop)\b',
-        r'\b([lL]yrics)\b',
-        r'\b([tT]hirst for money)\b',
-        r'\b(([fF]irst|[sS]econd|[tT]hird|[fF]ourth|[fF]ifth) heats?)\b',
-        r'\b(steering)\b',
-        r'\b(([wWhH]e(\'re|\'s)) get(s|tin(\'|g))? hot)\b',
-        r'\b(room temperature)\b',
-        r'\b([lL]imelight)\b',
-        r'\b([mM]emories)\b',
-        r'\b([wW]arm(est)? (welcome|thanks))\b',
-        r'\b([uU]mpire)\b',
-        r'\b([bB]alls?)\b',
-        r'\b([sS]ports?)\b',
-        r'\b([sS]ales?)\b',
-        r'\b([sS]ex(ual))\b',
-        r'\b(offices?)\b',
-        r'\b([dD]egrees? (burns?|of|are|certifcates?|affix(es)?|(to the )?(left|right)|removed|were (faked?|fabricated)))\b',
-        r'\b(verification of degrees?)\b',
-        r'\b((45|90180|360|270|460)[- ]degrees?)\b',
-        r'\b(([vV]arying) degrees?)\b',
-        r'\b([lL]ove)\b',
-        r'\b([cC]ounselors?)\b',
-        r'\b([rR]ap(e|ists?))\b',
-        r'\b([fF]resh(ness)?)\b',
-        r'\b([mM]anagers?)\b',
-        r'\b([bB]usiness(es)?)\b',
-        r'\b([rR]otate(d|s)?)\b',
-        r'\b([qQ]ualifications?)\b',
-        r'\b([mM]arkets?)\b',
-        r'\b([cC]omputers?)\b',
-        r'\b([sS]creens?)\b',
-        r'\b([cC]lass(es)?)\b',
-        r'\b([pP]ayments?)\b',
-        r'\b([bB]eers?)\b',
-        r'\b([wW]ines?)\b',
-        r'\b([eE]nglish)\b',
-        r'\b([lL]iterature)\b',
-        r'\b([sS]ymbolism)\b',
-        r'\b([fF]reez(e|ing))\b',
-        r'\b([cC]rowns?)\b',
-        r'\b([cC]ocky)\b',
-        r'\b([wW]orthless)\b',
-        r'\b([cC]areers?)\b',
-        r'\b([jJ]obs?)\b',
-        r'\b([cC]ars?)\b',
-        r'\b([tT]rains?)\b',
-        r'\b([sS]lopes?)\b',
-        r'\b([rR]aces?)\b',
-        r'\b([yY]oga)\b',
-        r'\b([mM]usic)\b',
-        r'\b([hH]omosexuals?)\b',
-        r'\b([hH]ell|HELL)\b',
-        r'\b([hH]ibernate)\b',
-        r'\b([sS]alt)\b',
-        r'\b([fF]ishing)\b',
-        r'\b([gG]irls?|[bB]oys?)\b',
-        r'\b([jJ]ump(ing|s)?)\b',
-        r'\b([fF]orged?)\b', 
-        #r'\b([]eat)\b',
-
-]
+        r'\b([cC]limate ([iI]mpact|[cC]hange|[cC]risis|[mM]odel|[eE]mergency))\b',
+        r'\b([gG]lobal [wW]arming)\b',
+        r'\b([gG]reenhouse ([gG]as(es)?)|[eE]ffects?|[eE]missions?)\b']
     }
-)
+) 

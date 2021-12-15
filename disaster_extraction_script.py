@@ -16,8 +16,6 @@ data = 'data/emdat_processed.csv'
 parse_dates = ['StartDate', 'EndDate']
 df_emdat = pd.read_csv(data, index_col="Dis No", parse_dates = parse_dates)
 
-
-
 df_heat_wave = get_df_disaster(df_emdat, HEAT_WAVES, HEAT_WAVES_val)
 df_heat_wave_bounds = retrieve_bounding_dates(df_heat_wave)
 
