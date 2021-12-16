@@ -1,3 +1,10 @@
+"""
+Extract quotes from Quotebank for the --specific-- heat waves and storms in each 
+year between 2015 and 2020. Quotes about climate change are also collected
+in order to evaluate the existence (or not) of a relationship between the 
+frequencies of the two.
+"""
+
 ### -------- IMPORTS -----------------------------------------------------------------------------------------
 
 import pandas as pd
