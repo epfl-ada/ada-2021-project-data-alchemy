@@ -123,3 +123,13 @@ Extracts a subset of the Quotebank dataset which matches the token 'especially'.
 Constants (mainly tags for regex patterns and disaster configurations) used for data extraction. Large parts not used in final analyses. Only climate_tags_pos, storm_tags_general and heat_tags_general used in ``disaster_and_climate_extraction.py``.
 
 
+# Contribution
+
+**Colin**: TODO.
+
+**Gil**: Worked on extracting the quotes pertaining to heat waves and storms throughout 2015-2020 from Quotebank. Quotes from specific disasters were extracted but ultimately not used. Worked on developing the plots for the 'relevant spikes' as well as their analyses.
+
+**Peng**: TODO.
+
+
+
