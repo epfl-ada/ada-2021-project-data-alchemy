@@ -1071,6 +1071,6 @@ climate_tags_pos = pd.DataFrame(
     {'tags': [
         r'\b([cC]limate ([iI]mpact|[cC]hange|[cC]risis|[mM]odel|[eE]mergency))\b',
         r'\b([gG]lobal [wW]arming)\b',
-        r'\b([gG]reenhouse ([gG]as(es)?)|[eE]ffects?|[eE]missions?)\b']
+        r'\b([gG]reenhouse ([gG]as(es)?|[eE]ffects?|[eE]missions?))\b']
     }
 ) 
