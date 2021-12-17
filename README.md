@@ -130,7 +130,7 @@ Design metrics for assessing disaster severity and discussing intensity, the ana
 
 # Contribution
 
-**Colin**: TODO.
+**Colin**: Created the skeleton of the website. Analysed the nationalities of the speakers of quotes related to an event for geographical analysis, ultimately unused. Created the worldmap for the conclusion. Initial extraction of quotes, replaced by Gil's system. 
 
 **Gil**: Worked on extracting the quotes pertaining to heat waves and storms throughout 2015-2020 from Quotebank. Quotes from specific disasters were extracted but ultimately not used. Worked on developing the plots for the 'relevant spikes' as well as their analyses.
 
