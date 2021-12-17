@@ -2,6 +2,9 @@
 import matplotlib.pyplot as plt
 import geopandas as geopd
 
+
+# Data extracted from generate_plots.ipynb
+# The numbers represent the spike in discussion around (climate change, disaster)
 data = {
 'India' : (0.1, 0.4), 
 'Europe' : (0.15, 0.2), 
