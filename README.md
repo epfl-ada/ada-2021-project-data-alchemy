@@ -105,8 +105,6 @@ We believe our initial tinkering shows that the problem we wish to tackle exists
 
 All notebooks and scripts (defining helper functions and constants) are under ``code``.
 
-### Files from Milestone 2 are under ``code/Milestone2``
-
 ### **emdat.ipynb**
 
 From Milestone 2: renamed to clean_emdat.ipynb
@@ -127,6 +125,8 @@ Extracts a subset of the Quotebank dataset which matches the token 'especially'.
 
 Constants (mainly tags for regex patterns and disaster configurations) used for data extraction. Large parts not used in final analyses. Only climate_tags_pos, storm_tags_general and heat_tags_general used in ``disaster_and_climate_extraction.py``.
 
+### **disaster_extr_constants.py**
+Design metrics for assessing disaster severity and discussing intensity, the analysis and plot of the regional analysis, the correlation between the severity of the disaster and the intensity of the discussion, other big event impact analysis and if  the occurrence of a disaster triggers more discussion about climate change.
 
 # Contribution
 
@@ -134,7 +134,7 @@ Constants (mainly tags for regex patterns and disaster configurations) used for 
 
 **Gil**: Worked on extracting the quotes pertaining to heat waves and storms throughout 2015-2020 from Quotebank. Quotes from specific disasters were extracted but ultimately not used. Worked on developing the plots for the 'relevant spikes' as well as their analyses.
 
-**Peng**: TODO.
+**Peng**: Worked on designing metrics for assessing disaster severity and discussing intensity. Analyzing whether the occurrence of a disaster triggers more discussion about climate change, analyzing the correlation between the severity of the disaster and the intensity of the discussion, analyzing the impact of countries and regions in different situations on the intensity of the discussion, and analyze the impact of the other major events on the discussion.
 
 
 
