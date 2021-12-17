@@ -95,3 +95,10 @@ Based on third party github repositories 'TextBlob' ,giving sentiment scores for
 ## **Conclusion**
 
 We believe our initial tinkering shows that the problem we wish to tackle exists and our questions have meaningful answers to be found, and we feel confident that the subject we wish to explore could lead to interesting and insightful data.
+
+# Milestone 3
+
+## **Structure of Notebooks And Files**
+
+All notebooks and scripts (defining helper functions and constants) are under (code)[code/].
+
