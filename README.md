@@ -105,6 +105,8 @@ We believe our initial tinkering shows that the problem we wish to tackle exists
 
 All notebooks and scripts (defining helper functions and constants) are under ``code``.
 
+### Files from Milestone 2 are under ``code/Milestone2``
+
 ### **emdat.ipynb**
 
 From Milestone 2: renamed to clean_emdat.ipynb
