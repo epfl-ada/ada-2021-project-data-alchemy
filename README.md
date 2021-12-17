@@ -103,7 +103,7 @@ We believe our initial tinkering shows that the problem we wish to tackle exists
 
 ## **Structure of Notebooks And Files**
 
-All notebooks and scripts (defining helper functions and constants) are under ``code``.
+All notebooks and scripts (defining helper functions and constants) are under ``code``. Code from Milestone 2 is udner ``code/Milestone2``. Unused scripts/notebooks are under ``code/ultimately_unused``.
 
 ### **emdat.ipynb**
 
