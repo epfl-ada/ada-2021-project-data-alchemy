@@ -111,7 +111,11 @@ From Milestone 2: renamed to clean_emdat.ipynb
 
 ### **generate_plots**
 
-Create plots for yearly analysis.
+Create plots for yearly spike analysis.
+
+### **plot_helpers.py**
+
+Helpers for generating plots of yearly spike analysis.
 
 ### **disaster_extr_helpers.py**
 
