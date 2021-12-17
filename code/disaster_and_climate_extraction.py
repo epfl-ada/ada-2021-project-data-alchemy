@@ -21,7 +21,7 @@ disaster_types = ['storm', 'heat_wave']
 
 for YEAR in YEARS:
 
-    data_path = 'data/quotes-'+str(YEAR)+'.json.bz2'
+    data_path = '../data/quotes-'+str(YEAR)+'.json.bz2'
     
     for disaster_type in disaster_types:
 

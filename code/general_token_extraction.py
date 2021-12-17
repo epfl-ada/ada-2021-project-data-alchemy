@@ -21,7 +21,7 @@ disaster_types = ['especially']
 
 for YEAR in YEARS:
 
-    data_path = 'data/quotes-'+str(YEAR)+'.json.bz2'
+    data_path = '../data/quotes-'+str(YEAR)+'.json.bz2'
     skip_climate = True
 
     regex_pattern_disaster = r'\b(especially)\b'

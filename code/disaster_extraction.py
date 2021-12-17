@@ -3,6 +3,8 @@ Extract quotes from Quotebank for the --specific-- heat waves and storms in each
 year between 2015 and 2020. Quotes about climate change are also collected
 in order to evaluate the existence (or not) of a relationship between the 
 frequencies of the two.
+
+Ultimatley this data was not used in our final analyses.
 """
 
 ### -------- IMPORTS -----------------------------------------------------------------------------------------
@@ -19,7 +21,7 @@ disaster_types = ['storm', 'heat_wave']
 
 ### ------------------ RUN -----------------------------------------------------------------------
 
-data = 'data/emdat_processed.csv'
+data = '../data/emdat_processed.csv'
 parse_dates = ['StartDate', 'EndDate']
 df_emdat = pd.read_csv(data, index_col="Dis No", parse_dates = parse_dates)
 
@@ -33,7 +35,7 @@ disaster_to_date_df = {'storm': df_storm_bounds, 'heat_wave': df_heat_wave_bound
 
 for YEAR in YEARS:
 
-    data_path = 'data/quotes-'+str(YEAR)+'.json.bz2'
+    data_path = '../data/quotes-'+str(YEAR)+'.json.bz2'
     
     for disaster_type in disaster_types:
         
@@ -64,10 +66,10 @@ lower_2020 = datetime.datetime(2020, 1, 1).strftime("%Y-%m-%d")
 
 regex_pattern = generate_regex_from_year_and_type(YEAR, disaster_type)
 
-data_path_2019 = 'data/quotes-'+str(YEAR-1)+'.json.bz2'
+data_path_2019 = '../data/quotes-'+str(YEAR-1)+'.json.bz2'
 df_concat_result_2019 = process_quotes(data_path_2019,lower_2019,upper_2019,YEAR-1,regex_pattern,compression=compression,chunksize=chunksize)
 
-data_path_2020 = 'data/quotes-'+str(YEAR)+'.json.bz2'
+data_path_2020 = '../data/quotes-'+str(YEAR)+'.json.bz2'
 df_concat_result_2020 = process_quotes(data_path_2020,lower_2020,upper_2020,YEAR,regex_pattern,compression=compression,chunksize=chunksize)
 
 df_list = [df_concat_result_2019, df_concat_result_2020]
@@ -95,7 +97,7 @@ lower_2019, upper_2019 = compute_date_bounds(start_2019, end_2019)
 
 regex_pattern = generate_regex_from_year_and_type(YEAR, disaster_type)
 
-data_path_2019 = 'data/quotes-'+str(YEAR-1)+'.json.bz2'
+data_path_2019 = '../data/quotes-'+str(YEAR-1)+'.json.bz2'
 df_concat_result_2019 = process_quotes(data_path_2019,lower_2019,upper_2019,YEAR-1,regex_pattern,compression=compression,chunksize=chunksize)
 
 write_df_to_disk(df_concat_result_2019, disaster_type, YEAR, compression=compression, file_type='both')

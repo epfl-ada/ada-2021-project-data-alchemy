@@ -1,3 +1,12 @@
+"""
+Constants (mainly tags for regex patterns and disaster configurations)
+used for data extraction.
+
+Large parts not used in final analyses. 
+Only climate_tags_pos, storm_tags_general and heat_tags_general used 
+in ``disaster_and_climate_extraction.py``.
+"""
+
 ### -------- IMPORTS -----------------------------------------------------------------------------------------
 
 import pandas as pd
