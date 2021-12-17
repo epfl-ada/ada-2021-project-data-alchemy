@@ -139,6 +139,9 @@ Design metrics for assessing disaster severity and discussing intensity, the ana
 ### **world_map.py**
 Creates world map of selected natural disaters.
 
+### **regional_analysis.py**
+Design metrics for assessing disaster severity and discussing intensity, regional analysis, correlation between the severity of the disaster and the intensity of the discussion analysis, other events analysis, check whether the occurrence of a disaster triggers more discussion about climate change.
+
 # Contribution
 
 **Colin**: Created the skeleton of the website. Analysed the nationalities of the speakers of quotes related to an event for geographical analysis, ultimately unused. Created the worldmap for the conclusion. Initial extraction of quotes, replaced by Gil's system. 
