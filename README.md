@@ -1,5 +1,8 @@
 # **Influence of Natural Disasters on Climate Change Discussion**
 
+# Datastory
+### Link to the [datastory](https://colin-majoor.github.io) 
+
 ## **Abstract**
 
 Climate change is a central issue in our world today and it has already had observable effects on the environment and rising temperatures are fueling environmental degradation through natural disasters and weather extremes. The consequences will become more and more devastating and will likely also reach irreversible highs. As young adults, these dire consequences are something that we become more and more prone to experiencing firsthand. The goal of this project is to determine how natural disaster occurrences influence the discussion around climate change. We would like to determine to what degree a particular natural disaster, such as a hurricane, sparks conversation around the topic of climate change. We would like to find out if the issue of climate change has become a more central topic over time as a result of natural disasters having potentially become increasingly severe.
