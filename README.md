@@ -93,10 +93,6 @@ Process data from both the Quotebank dataset as well as the EM-DAT dataset. Plot
 ### **sentiment_test.py**
 Based on third party github repositories 'TextBlob' ,giving sentiment scores for quotes. (*in progress*)
 
-### **generate_plots**
-
-Create plots for yearly analysis.
-
 ***The json files should be stored in the data folder to execute the code.***
 
 ## **Conclusion**
@@ -112,6 +108,10 @@ All notebooks and scripts (defining helper functions and constants) are under ``
 ### **emdat.ipynb**
 
 From Milestone 2: renamed to clean_emdat.ipynb
+
+### **generate_plots**
+
+Create plots for yearly analysis.
 
 ### **disaster_extr_helpers.py**
 
