@@ -100,5 +100,6 @@ We believe our initial tinkering shows that the problem we wish to tackle exists
 
 ## **Structure of Notebooks And Files**
 
-All notebooks and scripts (defining helper functions and constants) are under (code)[code/].
+All notebooks and scripts (defining helper functions and constants) are under (code)[ada-2021-project-data-alchemy
+/code].
 
