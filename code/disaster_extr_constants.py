@@ -14,6 +14,47 @@ from disaster_extr_helpers import extract_quotes_protected, extract_quotes
 
 ### ------------------ CONSTANTS -----------------------------------------------------------------------
 
+
+# General pos climate tags
+climate_tags_pos = pd.DataFrame(
+    {'tags': [
+        r'\b([cC]limate ([iI]mpact|[cC]hange|[cC]risis|[mM]odel|[eE]mergency))\b',
+        r'\b([gG]lobal [wW]arming)\b',
+        r'\b([gG]reenhouse ([gG]as(es)?|[eE]ffects?|[eE]missions?))\b']
+    }
+) 
+
+# General tags for extracting all storms
+storm_tags_general = pd.DataFrame(
+    {'tags': [
+        r'\b([tT]ropical [sS]torms?)\b',
+        r'\b([cC]yclones?)\b',
+        r'\b([tT]yphoons?)\b', 
+        r'\b([hH]urricanes?)\b',
+        r'\b([wW]inds?)\b',
+        r'\b([gG]usts?)\b',
+        r'\b((one|ten|[0-9]{1,2})-minute sustain(ed)?)\b',
+        r'\b([mM]aximum sustained winds?)\b',
+        r'\b([gG]ale[- ]force)\b']
+    }
+) 
+
+# General tags for extracting all heat waves
+heat_tags_general = pd.DataFrame(
+    {'tags': [
+        r'\b([mM]ercury (rose|hit))\b',
+        r'\b([hH]eat(ing)?)\b',
+        r'\b([tT]emperatures?)\b',
+        r'\b([hH]ot(test|ter)?)\b',
+        r'\b([wW]arm(er|est)?)\b',
+        r'\b([hH]eatstrokes?)\b',
+        r'\b([hH]eatwaves?)\b',
+        r'\b([hH]eatstorms?)\b']
+    }
+)
+
+#### ------ REST IS UNUSED FOR FINAL ANALYSES -------
+
 # 'Artificial' entry for Australia 2017 heat wave (only associated forest fire was already present in EMDAT)
 # Not necessary to add to dataframe, row already added to csv file
 australia_heat_wave = { 
@@ -97,20 +138,6 @@ HEAT_WAVES_2020_val = {
 }
 
 # ---- TAGS USED FOR EXTRACTION (see disaster_extraction_script.py for usage) ----
-
-# General tags for extracting all heat waves
-heat_tags_general = pd.DataFrame(
-    {'tags': [
-        r'\b([mM]ercury (rose|hit))\b',
-        r'\b([hH]eat(ing)?)\b',
-        r'\b([tT]emperatures?)\b',
-        r'\b([hH]ot(test|ter)?)\b',
-        r'\b([wW]arm(er|est)?)\b',
-        r'\b([hH]eatstrokes?)\b',
-        r'\b([hH]eatwaves?)\b',
-        r'\b([hH]eatstorms?)\b']
-    }
-)
 
 # General tags for heat waves
 heat_tags = pd.DataFrame(
@@ -226,21 +253,6 @@ heat_tags_2020 = pd.DataFrame(
         r'\b(Black Summer)\b']
     }
 )
-
-# General tags for extracting all storms
-storm_tags_general = pd.DataFrame(
-    {'tags': [
-        r'\b([tT]ropical [sS]torms?)\b',
-        r'\b([cC]yclones?)\b',
-        r'\b([tT]yphoons?)\b', 
-        r'\b([hH]urricanes?)\b',
-        r'\b([wW]inds?)\b',
-        r'\b([gG]usts?)\b',
-        r'\b((one|ten|[0-9]{1,2})-minute sustain(ed)?)\b',
-        r'\b([mM]aximum sustained winds?)\b',
-        r'\b([gG]ale[- ]force)\b']
-    }
-) 
 
 # General tags for storms
 storm_tags = pd.DataFrame(
@@ -1074,12 +1086,3 @@ storm_tags_2020_pos = pd.DataFrame(
         r'(?=.*\b([pP]hilippines?|Manila|Quezon|Davao|Caloocan|Budta)\b)(?=.*\b([fF]lood(waters?|s|ed|ing)?)\b)']
     }
 )
-
-# General pos climate tags
-climate_tags_pos = pd.DataFrame(
-    {'tags': [
-        r'\b([cC]limate ([iI]mpact|[cC]hange|[cC]risis|[mM]odel|[eE]mergency))\b',
-        r'\b([gG]lobal [wW]arming)\b',
-        r'\b([gG]reenhouse ([gG]as(es)?|[eE]ffects?|[eE]missions?))\b']
-    }
-) 

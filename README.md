@@ -102,3 +102,24 @@ We believe our initial tinkering shows that the problem we wish to tackle exists
 
 All notebooks and scripts (defining helper functions and constants) are under ``code``.
 
+### **emdat.ipynb**
+
+From Milestone 2: renamed to clean_emdat.ipynb
+
+### **disaster_extr_helpers.py**
+
+Defines a set of helper functions mainly for extraction of quotes from Quotebank and performing computations related to extraction.
+
+### **disaster_and_climate_extraction.py**
+
+Extracts a subset of the Quotebank dataset which matches regex patterns (defined in ``disaster_extr_constants.py``) for general storms, heat waves and climate change. It performs this task for each year and saves the compressed data frames to disk.
+
+### **general_token_extraction.py**
+
+Extracts a subset of the Quotebank dataset which matches the token 'especially'. It performs this task for each year and saves the compressed data frames to disk.
+
+### **disaster_extr_constants.py**
+
+Constants (mainly tags for regex patterns and disaster configurations) used for data extraction. Large parts not used in final analyses. Only climate_tags_pos, storm_tags_general and heat_tags_general used in ``disaster_and_climate_extraction.py``.
+
+
